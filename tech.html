@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/logos/one-vision-tech-mark.webp">
 <title>One Vision Tech — Technologie sans limites</title>
 <meta name="description" content="One Vision Tech : iPhone, Mac, iPad, accessoires et gaming à Dakar. Produits vérifiés, paiement Wave / Orange Money / à la livraison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,13 +175,20 @@
   .pay-option .p-label span{font-size:0.78rem;color:var(--text-muted);}
   .field-label{font-size:0.82rem;color:var(--text-muted);margin:14px 0 6px;display:block;}
   .modal input{width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--text);padding:11px 13px;border-radius:9px;font-size:0.9rem;font-family:inherit;}
+
+  .brand-logo{height:38px;width:auto;mix-blend-mode:screen;}
+  .hero-logo{width:min(440px,86vw);margin:0 auto 26px;mix-blend-mode:screen;}
+  .product-img{width:100%;height:170px;object-fit:contain;margin-bottom:16px;}
+  .demand-card img{width:100%;height:170px;object-fit:contain;margin-bottom:16px;}
+  .pay-option .p-left{display:flex;align-items:center;gap:12px;}
+  .pay-option .p-left img{width:34px;height:34px;border-radius:8px;object-fit:cover;}
 </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <a href="index.html" class="brand">ONE <span>VISION</span><small>TECH — Technologie sans limites</small></a>
+    <a href="index.html" class="brand"><img class="brand-logo" src="img/logos/one-vision-tech-mark.webp" alt="One Vision Tech"></a>
     <div class="nav-links">
       <a href="#iphone">iPhone</a>
       <a href="#accessoires">Accessoires</a>
@@ -196,6 +204,7 @@
 
 <section class="hero">
   <div class="hero-glow"></div>
+  <img class="hero-logo" src="img/logos/one-vision-tech-full.webp" alt="One Vision Tech — Technologie sans limites">
   <div class="tag-loc">🇸🇳 Dakar, Sénégal</div>
   <h1 class="headline">Technologie sans limites, service sans détour</h1>
   <p class="sub">iPhone, Mac, iPad et accessoires — chaque appareil est vérifié avant de vous être livré. One Vision Tech, le pôle actif du groupe One Vision.</p>
@@ -248,11 +257,13 @@
   </div>
   <div class="demand-grid">
     <div class="demand-card">
+      <img src="img/produits/macbook.webp" alt="MacBook" loading="lazy">
       <h3>MacBook</h3>
       <p>MacBook Air, MacBook Pro — différents modèles sur commande.</p>
       <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%2C%20je%20cherche%20un%20MacBook." target="_blank">Demander la disponibilité →</a>
     </div>
     <div class="demand-card">
+      <img src="img/produits/ipad.webp" alt="iPad" loading="lazy">
       <h3>iPad</h3>
       <p>iPad Air, iPad Pro — différentes couleurs et capacités.</p>
       <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%2C%20je%20cherche%20un%20iPad." target="_blank">Demander la disponibilité →</a>
@@ -382,9 +393,9 @@
   <span class="field-label">Quartier</span>
   <input type="text" id="chkArea" placeholder="Quartier, Dakar">
   <span class="field-label">Paiement</span>
-  <div class="pay-option selected" data-pay="Wave" onclick="selectPay(this)"><div class="p-label"><b>Wave</b><span>Envoi avant livraison</span></div><span>✓</span></div>
-  <div class="pay-option" data-pay="Orange Money" onclick="selectPay(this)"><div class="p-label"><b>Orange Money</b><span>Envoi avant livraison</span></div><span></span></div>
-  <div class="pay-option" data-pay="À la livraison" onclick="selectPay(this)"><div class="p-label"><b>À la livraison</b><span>Cash à la réception</span></div><span></span></div>
+  <div class="pay-option selected" data-pay="Wave" onclick="selectPay(this)"><div class="p-left"><img src="img/logos/wave.webp" alt=""><div class="p-label"><b>Wave</b><span>Envoi avant livraison</span></div></div><span>✓</span></div>
+  <div class="pay-option" data-pay="Orange Money" onclick="selectPay(this)"><div class="p-left"><img src="img/logos/orange-money.webp" alt=""><div class="p-label"><b>Orange Money</b><span>Envoi avant livraison</span></div></div><span></span></div>
+  <div class="pay-option" data-pay="À la livraison" onclick="selectPay(this)"><div class="p-left"><div class="p-label"><b>À la livraison</b><span>Cash à la réception</span></div></div><span></span></div>
   <button class="btn-primary" style="width:100%;margin-top:16px;" onclick="submitOrder()">Envoyer la commande via WhatsApp</button>
 </div>
 
@@ -431,7 +442,7 @@ const accessories = [
   {name:"Apple Pencil", desc:"2e génération ou Pro — contactez-nous pour les modèles disponibles", price:null},
   {name:"Magic Keyboard", desc:"Clavier sans fil Apple — contactez-nous pour les modèles disponibles", price:null},
   {name:"AirPods Max", desc:"Casque premium à réduction de bruit active", price:null},
-  {name:"Power Bank câbles intégrés", desc:"10 000 mAh avec câbles Lightning, USB-C et Micro-USB", price:25000},
+  {name:"Power Bank câbles intégrés", img:"Power Bank Cables Integres", desc:"10 000 mAh avec câbles Lightning, USB-C et Micro-USB", price:25000},
 ];
 
 const deviceSVG = `<svg viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -444,6 +455,8 @@ const accSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/
   <circle cx="50" cy="50" r="14" fill="#161D26" stroke="#33445A" stroke-width="2"/>
 </svg>`;
 
+function slug(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+function imgOf(name){ return `img/produits/${slug(name)}.webp`; }
 function fmt(n){ return n.toLocaleString('fr-FR').replace(/,/g,' ') + ' FCFA'; }
 
 // ---- RENDER IPHONES ----
@@ -459,7 +472,7 @@ function renderIphones(filter){
     const idx = iphones.indexOf(p);
     return `<div class="card">
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
-      <div class="device-icon">${deviceSVG}</div>
+      <img class="product-img" src="${imgOf(p.name)}" alt="${p.name}" loading="lazy">
       <h4>${p.name}</h4>
       ${p.variants.map(v=>`<div class="variant-row"><span>${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('')}
       <button class="card-cta" onclick="openVariantPicker(${idx})">Choisir</button>
@@ -478,7 +491,7 @@ filterBar.addEventListener('click', e=>{
 // ---- RENDER ACCESSORIES ----
 document.getElementById('accGrid').innerHTML = accessories.map((a,i)=>`
   <div class="card">
-    <div class="device-icon">${accSVG}</div>
+    <img class="product-img" src="${imgOf(a.img||a.name)}" alt="${a.name}" loading="lazy">
     <h4>${a.name}</h4>
     <p class="note">${a.desc}</p>
     ${a.price

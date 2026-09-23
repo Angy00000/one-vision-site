@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/logos/one-vision-tech-mark.webp">
 <title>One Vision — Deux esprits. Une direction.</title>
 <meta name="description" content="One Vision : groupe entrepreneurial dakarois autour de la Tech, l'Automobile et l'Immobilier. Deux esprits. Une direction.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -195,13 +196,20 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     color:var(--text-muted);font-size:0.85rem;
   }
+
+  .pole-logo{width:100%;max-width:340px;margin:0 0 22px;mix-blend-mode:screen;}
+  .pole-card.active .pole-logo{max-width:460px;}
+  .brand-logo{height:36px;width:auto;mix-blend-mode:screen;}
+  .hero-marks{display:flex;justify-content:center;gap:18px;margin:0 auto 34px;flex-wrap:wrap;}
+  .hero-marks img{height:74px;width:auto;mix-blend-mode:screen;}
+  @media(max-width:560px){ .hero-marks img{height:52px;} }
 </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <a href="#" class="brand">ONE <span>VISION</span></a>
+    <a href="#" class="brand"><img class="brand-logo" src="img/logos/one-vision-tech-mark.webp" alt="One Vision"></a>
     <div class="nav-links">
       <a href="tech.html">Tech</a>
       <a href="#immobilier">Immobilier</a>
@@ -214,6 +222,11 @@
 
 <section class="hero">
   <div class="hero-glow"></div>
+  <div class="hero-marks">
+    <img src="img/logos/one-vision-tech-mark.webp" alt="One Vision Tech">
+    <img src="img/logos/one-vision-immobilier-mark.webp" alt="One Vision Immobilier">
+    <img src="img/logos/one-vision-automobile-mark.webp" alt="One Vision Automobile">
+  </div>
   <div class="eyebrow-mark"><span class="dot"></span>Groupe fondé à Dakar</div>
   <h1 class="headline">Deux esprits.<br>Une direction.</h1>
   <p class="sub">One Vision réunit la technologie, la mobilité et l'immobilier sous une même ambition : construire des marques durables qui accompagnent les Dakarois dans leur quotidien.</p>
@@ -235,7 +248,7 @@
 
   <div class="poles-grid">
     <a href="tech.html" class="pole-card active">
-      <div class="pole-icon">◆</div>
+      <img class="pole-logo" src="img/logos/one-vision-tech-full.webp" alt="One Vision Tech — Technologie sans limites">
       <h3>One Vision Tech</h3>
       <p class="desc">Apple, smartphones, informatique, accessoires et gaming — produits authentiques, paiement flexible, livraison rapide à Dakar.</p>
       <div class="pole-tags">
@@ -246,14 +259,14 @@
     </a>
 
     <div class="pole-card soon pole-immo" id="immobilier">
-      <div class="pole-icon">◈</div>
+      <img class="pole-logo" src="img/logos/one-vision-immobilier-full.webp" alt="One Vision Immobilier">
       <h3>One Vision Immobilier</h3>
       <p class="desc">Achat, vente, location, conseil et investissement — des espaces pour un meilleur avenir.</p>
       <span class="pole-status soon-tag">Bientôt disponible</span>
     </div>
 
     <div class="pole-card soon pole-auto" id="automobile">
-      <div class="pole-icon">◉</div>
+      <img class="pole-logo" src="img/logos/one-vision-automobile-full.webp" alt="One Vision Automobile">
       <h3>One Vision Automobile</h3>
       <p class="desc">Achat, vente, échange, location et services automobiles — roulez vers un meilleur avenir.</p>
       <span class="pole-status soon-tag">Bientôt disponible</span>
