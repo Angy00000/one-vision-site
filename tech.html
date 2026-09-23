@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Vision Tech — Technologie sans limites</title>
+<meta name="description" content="One Vision Tech : iPhone, Mac, iPad, accessoires et gaming à Dakar. Produits vérifiés, paiement Wave / Orange Money / à la livraison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D12;
+    --surface:#10151C;
+    --surface-2:#161D26;
+    --line:#232D38;
+    --text:#EDF1F5;
+    --text-muted:#8B98A8;
+    --blue:#2F7FFF;
+    --blue-glow:#7FC4FF;
+    --green:#2FBF71;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;}
+  h1,h2,h3,h4,.brand{font-family:'Sora',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;border:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  section{padding:80px 24px;}
+  .section-head{max-width:640px;margin:0 auto 48px;text-align:center;}
+  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700;margin-bottom:12px;}
+  .section-head p{color:var(--text-muted);}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,13,18,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;gap:20px;}
+  .brand{font-size:1.05rem;font-weight:700;display:flex;flex-direction:column;line-height:1.1;}
+  .brand small{font-size:0.62rem;color:var(--text-muted);font-weight:500;letter-spacing:0.04em;}
+  .brand span{color:var(--blue);}
+  .nav-links{display:flex;gap:26px;align-items:center;}
+  .nav-links a{font-size:0.9rem;color:var(--text-muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .cart-btn{position:relative;background:var(--surface-2);border:1px solid var(--line);width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--text);}
+  .cart-count{position:absolute;top:-6px;right:-6px;background:var(--blue);color:#fff;font-size:0.68rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .whatsapp-cta{background:var(--blue);color:#fff;padding:9px 18px;border-radius:8px;font-size:0.88rem;font-weight:600;}
+  .whatsapp-cta:hover{background:#2670e0;}
+  @media(max-width:820px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{position:relative;padding:170px 24px 90px;text-align:center;overflow:hidden;}
+  .hero-glow{position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle, rgba(47,127,255,0.18) 0%, rgba(47,127,255,0) 65%);pointer-events:none;}
+  .tag-loc{display:inline-flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--text-muted);margin-bottom:24px;}
+  h1.headline{font-size:clamp(2.1rem,5.2vw,3.6rem);font-weight:800;line-height:1.1;max-width:760px;margin:0 auto 22px;}
+  .hero p.sub{max-width:600px;margin:0 auto 36px;color:var(--text-muted);font-size:1.05rem;}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
+  .btn-primary{background:var(--blue);color:#fff;padding:13px 26px;border-radius:10px;font-weight:600;font-size:0.95rem;display:inline-block;transition:background .2s;}
+  .btn-primary:hover{background:#2670e0;}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);padding:13px 26px;border-radius:10px;font-weight:600;font-size:0.95rem;transition:border-color .2s,background .2s;}
+  .btn-ghost:hover{border-color:var(--blue);background:var(--surface);}
+  .stat-row{display:flex;justify-content:center;gap:0;flex-wrap:wrap;max-width:760px;margin:0 auto;border-top:1px solid var(--line);padding-top:36px;}
+  .stat{flex:1;min-width:140px;padding:0 16px;}
+  .stat b{display:block;font-size:1.7rem;font-family:'Sora',sans-serif;color:var(--blue-glow);}
+  .stat span{font-size:0.82rem;color:var(--text-muted);}
+
+  /* ENGAGEMENT */
+  .engagement{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .engagement-inner{max-width:820px;margin:0 auto;text-align:center;}
+  .engagement p.quote{font-size:1.25rem;font-weight:500;line-height:1.6;color:var(--text);margin-bottom:20px;}
+  .engagement .who{color:var(--text-muted);font-size:0.9rem;}
+  .trust-strip{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:32px;font-size:0.86rem;color:var(--text-muted);}
+
+  /* FILTER TABS */
+  .filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+  .filter-btn{background:var(--surface-2);border:1px solid var(--line);color:var(--text-muted);padding:8px 18px;border-radius:100px;font-size:0.86rem;font-weight:600;transition:all .2s;}
+  .filter-btn.active,.filter-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+
+  /* PRODUCT GRID */
+  .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;position:relative;}
+  .card:hover{border-color:#33445A;transform:translateY(-2px);}
+  .card-badge{position:absolute;top:14px;right:14px;font-size:0.66rem;font-weight:700;padding:4px 9px;border-radius:100px;background:var(--blue);color:#fff;letter-spacing:0.02em;}
+  .device-icon{width:100%;height:110px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .device-icon svg{height:90px;width:auto;}
+  .card h4{font-size:1.02rem;font-weight:700;margin-bottom:10px;}
+  .variant-row{display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-muted);padding:5px 0;border-bottom:1px dashed var(--line);}
+  .variant-row:last-of-type{border-bottom:none;margin-bottom:14px;}
+  .variant-row b{color:var(--text);font-weight:600;}
+  .card-cta{margin-top:auto;background:var(--surface-2);border:1px solid var(--line);color:var(--text);padding:11px;border-radius:9px;font-weight:600;font-size:0.9rem;transition:background .2s,border-color .2s;}
+  .card-cta:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .card-price-single{font-size:1.15rem;font-weight:700;color:var(--blue-glow);margin-bottom:14px;}
+  .card p.note{color:var(--text-muted);font-size:0.84rem;margin-bottom:16px;flex-grow:1;}
+
+  /* ON DEMAND */
+  .demand-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .demand-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;}
+  .demand-card h3{font-size:1.2rem;margin-bottom:8px;}
+  .demand-card p{color:var(--text-muted);font-size:0.9rem;margin-bottom:16px;}
+  .demand-card a{color:var(--blue-glow);font-weight:600;font-size:0.9rem;}
+  @media(max-width:640px){ .demand-grid{grid-template-columns:1fr;} }
+
+  /* SPLIT: recondition + trade-in */
+  .split{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .split-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;}
+  .split-card h3{font-size:1.25rem;margin-bottom:10px;}
+  .split-card p{color:var(--text-muted);font-size:0.92rem;margin-bottom:20px;}
+  .steps{display:flex;flex-direction:column;gap:14px;}
+  .step{display:flex;gap:14px;align-items:flex-start;}
+  .step-num{width:26px;height:26px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;color:var(--blue-glow);flex-shrink:0;}
+  .step p{color:var(--text);font-size:0.9rem;margin:0;}
+  @media(max-width:760px){ .split{grid-template-columns:1fr;} }
+
+  /* WHY */
+  .why-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .why-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;}
+  .why-card .ic{font-size:1.4rem;margin-bottom:14px;}
+  .why-card h4{font-size:1.02rem;margin-bottom:8px;}
+  .why-card p{color:var(--text-muted);font-size:0.88rem;}
+  @media(max-width:760px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* CONTACT */
+  .contact-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:40px;}
+  .contact-info .info-row{display:flex;gap:14px;margin-bottom:20px;}
+  .info-ic{width:38px;height:38px;border-radius:9px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .info-row b{display:block;font-size:0.92rem;}
+  .info-row span{color:var(--text-muted);font-size:0.86rem;}
+  form.contact-form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px;}
+  .contact-form input,.contact-form select,.contact-form textarea{
+    background:var(--surface-2);border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:9px;font-size:0.92rem;font-family:inherit;
+  }
+  .contact-form textarea{resize:vertical;min-height:90px;}
+  @media(max-width:820px){ .contact-wrap{grid-template-columns:1fr;} }
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:48px 24px 28px;}
+  .footer-grid{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;margin-bottom:30px;}
+  .footer-col h5{font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;font-weight:600;}
+  .footer-col a,.footer-col p{display:block;color:var(--text);font-size:0.9rem;margin-bottom:8px;}
+  .footer-bottom{max-width:1180px;margin:0 auto;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-muted);font-size:0.84rem;}
+
+  /* FLOATING */
+  .float-whatsapp{position:fixed;bottom:24px;right:24px;background:var(--green);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:150;box-shadow:0 6px 18px rgba(0,0,0,0.35);}
+
+  /* MODAL / DRAWER */
+  .overlay{position:fixed;inset:0;background:rgba(5,7,10,0.6);backdrop-filter:blur(2px);z-index:300;display:none;}
+  .overlay.open{display:block;}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:400px;background:var(--surface);border-left:1px solid var(--line);z-index:310;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;}
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .drawer-head h3{font-size:1.05rem;}
+  .drawer-close{background:none;color:var(--text-muted);font-size:1.3rem;}
+  .drawer-body{flex:1;overflow-y:auto;padding:20px 22px;}
+  .cart-item{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);}
+  .cart-item-info b{display:block;font-size:0.92rem;}
+  .cart-item-info span{font-size:0.8rem;color:var(--text-muted);}
+  .cart-item-remove{color:#E0453F;font-size:0.78rem;font-weight:600;background:none;}
+  .cart-empty{color:var(--text-muted);text-align:center;padding:40px 0;font-size:0.92rem;}
+  .drawer-foot{padding:20px 22px;border-top:1px solid var(--line);}
+  .cart-total{display:flex;justify-content:space-between;font-weight:700;margin-bottom:16px;font-size:1.02rem;}
+
+  .modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;z-index:320;width:92%;max-width:420px;display:none;max-height:86vh;overflow-y:auto;}
+  .modal.open{display:block;}
+  .modal h3{margin-bottom:16px;font-size:1.1rem;}
+  .modal-close{position:absolute;top:16px;right:16px;background:none;color:var(--text-muted);font-size:1.2rem;}
+  .variant-pick{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;cursor:pointer;transition:border-color .2s,background .2s;}
+  .variant-pick:hover{border-color:var(--blue);background:var(--surface-2);}
+  .variant-pick b{font-weight:700;color:var(--blue-glow);}
+
+  .pay-option{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;cursor:pointer;}
+  .pay-option.selected{border-color:var(--blue);background:var(--surface-2);}
+  .pay-option .p-label b{display:block;font-size:0.92rem;}
+  .pay-option .p-label span{font-size:0.78rem;color:var(--text-muted);}
+  .field-label{font-size:0.82rem;color:var(--text-muted);margin:14px 0 6px;display:block;}
+  .modal input{width:100%;background:var(--surface-2);border:1px solid var(--line);color:var(--text);padding:11px 13px;border-radius:9px;font-size:0.9rem;font-family:inherit;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="brand">ONE <span>VISION</span><small>TECH — Technologie sans limites</small></a>
+    <div class="nav-links">
+      <a href="#iphone">iPhone</a>
+      <a href="#accessoires">Accessoires</a>
+      <a href="#mac-ipad">Mac &amp; iPad</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></button>
+      <a class="whatsapp-cta" href="https://wa.me/221000000000" target="_blank">Commander</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="tag-loc">🇸🇳 Dakar, Sénégal</div>
+  <h1 class="headline">Technologie sans limites, service sans détour</h1>
+  <p class="sub">iPhone, Mac, iPad et accessoires — chaque appareil est vérifié avant de vous être livré. One Vision Tech, le pôle actif du groupe One Vision.</p>
+  <div class="hero-actions">
+    <a href="#iphone" class="btn-primary">Voir les iPhone</a>
+    <a href="#contact" class="btn-ghost">Nous écrire</a>
+  </div>
+  <div class="stat-row">
+    <div class="stat"><b>24+</b><span>Modèles iPhone</span></div>
+    <div class="stat"><b>100%</b><span>Authentique</span></div>
+    <div class="stat"><b>7j/7</b><span>Support</span></div>
+    <div class="stat"><b>24h</b><span>Livraison Dakar</span></div>
+  </div>
+</section>
+
+<section class="engagement">
+  <div class="engagement-inner">
+    <p class="quote">« Chez One Vision Tech, chaque téléphone, chaque Mac, chaque accessoire est vérifié avant de partir — comme s'il était destiné à un proche. Pas de contrefaçon, pas de mauvaise surprise. »</p>
+    <div class="who">L'équipe One Vision Tech — Dakar</div>
+    <div class="trust-strip">
+      <span>✅ Produits d'origine</span>
+      <span>💳 Wave · Orange Money · Livraison</span>
+      <span>🚚 Livraison rapide Dakar</span>
+      <span>🔒 Satisfait ou remboursé</span>
+    </div>
+  </div>
+</section>
+
+<section id="iphone">
+  <div class="section-head">
+    <h2>iPhone</h2>
+    <p>Débloqués toutes SIM, vérifiés avant expédition.</p>
+  </div>
+  <div class="filters" id="filterBar"></div>
+  <div class="grid" id="iphoneGrid"></div>
+</section>
+
+<section id="accessoires" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="section-head">
+    <h2>Accessoires</h2>
+    <p>Chargeurs, AirPods, montres et batteries — 100% d'origine.</p>
+  </div>
+  <div class="grid" id="accGrid"></div>
+</section>
+
+<section id="mac-ipad">
+  <div class="section-head">
+    <h2>Mac &amp; iPad</h2>
+    <p>Disponibles sur commande, toutes générations confondues.</p>
+  </div>
+  <div class="demand-grid">
+    <div class="demand-card">
+      <h3>MacBook</h3>
+      <p>MacBook Air, MacBook Pro — différents modèles sur commande.</p>
+      <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%2C%20je%20cherche%20un%20MacBook." target="_blank">Demander la disponibilité →</a>
+    </div>
+    <div class="demand-card">
+      <h3>iPad</h3>
+      <p>iPad Air, iPad Pro — différentes couleurs et capacités.</p>
+      <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%2C%20je%20cherche%20un%20iPad." target="_blank">Demander la disponibilité →</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="split">
+    <div class="split-card">
+      <h3>Besoin d'un conseil ?</h3>
+      <p>Notre équipe répond 7j/7 sur WhatsApp, sans engagement d'achat de votre côté.</p>
+      <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%20!%20J'ai%20besoin%20d'un%20conseil." class="btn-primary" target="_blank">Poser ma question</a>
+    </div>
+    <div class="split-card">
+      <h3>iPhone reconditionné</h3>
+      <p>Petit budget ? Nos iPhones reconditionnés sont testés et débloqués toutes SIM, à partir de 50 000 FCFA.</p>
+      <a href="https://wa.me/221000000000?text=Bonjour%20One%20Vision%20Tech%2C%20je%20cherche%20un%20iPhone%20reconditionn%C3%A9." class="btn-ghost" target="_blank">Voir les disponibilités</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Troc &amp; échange</h2>
+    <p>Reprenez votre ancien téléphone contre un modèle plus récent.</p>
+  </div>
+  <div class="split-card" style="max-width:640px;margin:0 auto;">
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><p>Filmez votre téléphone actuel (écran, dos, état général).</p></div>
+      <div class="step"><div class="step-num">2</div><p>Indiquez-nous le modèle One Vision Tech que vous visez.</p></div>
+      <div class="step"><div class="step-num">3</div><p>Recevez notre proposition d'échange sous 24h.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="section-head">
+    <h2>Pourquoi One Vision Tech</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="ic">✓</div><h4>Authenticité</h4><p>Chaque appareil est contrôlé avant de quitter nos mains — sans exception.</p></div>
+    <div class="why-card"><div class="ic">💬</div><h4>Accompagnement</h4><p>Une équipe joignable sur WhatsApp 7j/7, avant comme après l'achat.</p></div>
+    <div class="why-card"><div class="ic">💳</div><h4>Paiement flexible</h4><p>Wave, Orange Money ou paiement à la livraison — comme ça vous arrange.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head">
+    <h2>Nous contacter</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="info-row"><div class="info-ic">💬</div><div><b>WhatsApp</b><span>+221 00 000 00 00</span></div></div>
+      <div class="info-row"><div class="info-ic">📍</div><div><b>Zone de livraison</b><span>Dakar et environs</span></div></div>
+      <div class="info-row"><div class="info-ic">🕐</div><div><b>Disponibilité</b><span>Lun – Sam, 8h – 20h</span></div></div>
+    </div>
+    <form class="contact-form" onsubmit="sendContactForm(event)">
+      <input type="text" id="cName" placeholder="Votre nom" required>
+      <input type="tel" id="cPhone" placeholder="Téléphone WhatsApp" required>
+      <select id="cInterest">
+        <option>iPhone</option>
+        <option>Accessoires</option>
+        <option>Mac / iPad</option>
+        <option>Troc &amp; échange</option>
+        <option>Autre</option>
+      </select>
+      <textarea id="cMsg" placeholder="Message"></textarea>
+      <button type="submit" class="btn-primary">Envoyer via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h5>ONE VISION TECH</h5>
+      <p>iPhone, Mac, iPad et accessoires — Dakar, Sénégal.</p>
+    </div>
+    <div class="footer-col">
+      <h5>PRODUITS</h5>
+      <a href="#iphone">iPhone</a>
+      <a href="#accessoires">Accessoires</a>
+      <a href="#mac-ipad">Mac &amp; iPad</a>
+    </div>
+    <div class="footer-col">
+      <h5>CONTACT</h5>
+      <a href="https://wa.me/221000000000">WhatsApp</a>
+      <a href="tel:+221000000000">Téléphone</a>
+      <a href="#contact">Formulaire</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 One Vision Tech — Dakar, Sénégal.</span>
+    <a href="index.html">← Retour à One Vision</a>
+  </div>
+</footer>
+
+<a class="float-whatsapp" href="https://wa.me/221000000000" target="_blank">💬</a>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="drawer" id="cartDrawer">
+  <div class="drawer-head"><h3>Mon panier</h3><button class="drawer-close" onclick="closeAll()">×</button></div>
+  <div class="drawer-body" id="cartBody"><div class="cart-empty">Votre panier est vide.</div></div>
+  <div class="drawer-foot" id="cartFoot" style="display:none;">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">0 FCFA</span></div>
+    <button class="btn-primary" style="width:100%;" onclick="openCheckout()">Confirmer la commande</button>
+  </div>
+</div>
+
+<!-- VARIANT MODAL -->
+<div class="modal" id="variantModal">
+  <button class="modal-close" onclick="closeAll()">×</button>
+  <h3 id="variantModalTitle">Choisissez votre stockage</h3>
+  <div id="variantList"></div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal" id="checkoutModal">
+  <button class="modal-close" onclick="closeAll()">×</button>
+  <h3>Finaliser la commande</h3>
+  <span class="field-label">Nom complet</span>
+  <input type="text" id="chkName" placeholder="Nom complet">
+  <span class="field-label">Téléphone</span>
+  <input type="tel" id="chkPhone" placeholder="Téléphone WhatsApp">
+  <span class="field-label">Quartier</span>
+  <input type="text" id="chkArea" placeholder="Quartier, Dakar">
+  <span class="field-label">Paiement</span>
+  <div class="pay-option selected" data-pay="Wave" onclick="selectPay(this)"><div class="p-label"><b>Wave</b><span>Envoi avant livraison</span></div><span>✓</span></div>
+  <div class="pay-option" data-pay="Orange Money" onclick="selectPay(this)"><div class="p-label"><b>Orange Money</b><span>Envoi avant livraison</span></div><span></span></div>
+  <div class="pay-option" data-pay="À la livraison" onclick="selectPay(this)"><div class="p-label"><b>À la livraison</b><span>Cash à la réception</span></div><span></span></div>
+  <button class="btn-primary" style="width:100%;margin-top:16px;" onclick="submitOrder()">Envoyer la commande via WhatsApp</button>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "221000000000"; // TODO: remplacer par le numéro One Vision Tech
+
+// ---- DATA ----
+const iphones = [
+  {line:"XR", name:"iPhone XR", variants:[["64 Go",90000],["128 Go",100000],["256 Go",120000]]},
+  {line:"11", name:"iPhone 11", variants:[["64 Go",115000],["128 Go",120000],["256 Go",130000]]},
+  {line:"11", name:"iPhone 11 Pro", variants:[["64 Go",150000],["256 Go",165000],["512 Go",170000]]},
+  {line:"11", name:"iPhone 11 Pro Max", variants:[["64 Go",165000],["256 Go",175000],["512 Go",190000]]},
+  {line:"12", name:"iPhone 12", variants:[["64 Go",140000],["128 Go",160000],["256 Go",180000]]},
+  {line:"12", name:"iPhone 12 Pro", variants:[["128 Go",185000],["256 Go",195000]]},
+  {line:"12", name:"iPhone 12 Pro Max", variants:[["128 Go",230000],["256 Go",250000]]},
+  {line:"13", name:"iPhone 13", variants:[["128 Go",190000],["256 Go",210000]]},
+  {line:"13", name:"iPhone 13 Pro", variants:[["128 Go",240000],["256 Go",260000]]},
+  {line:"13", name:"iPhone 13 Pro Max", variants:[["128 Go",290000],["256 Go",310000],["512 Go",340000],["1 To",360000]]},
+  {line:"14", name:"iPhone 14", variants:[["128 Go",250000],["256 Go",260000]]},
+  {line:"14", name:"iPhone 14 Plus", variants:[["128 Go",280000],["256 Go",300000]]},
+  {line:"14", name:"iPhone 14 Pro", variants:[["128 Go",290000],["256 Go",310000]]},
+  {line:"14", name:"iPhone 14 Pro Max", variants:[["128 Go",380000],["256 Go",390000],["512 Go",400000]]},
+  {line:"15", name:"iPhone 15", variants:[["128 Go",280000],["256 Go",300000]]},
+  {line:"15", name:"iPhone 15 Plus", variants:[["128 Go",340000],["256 Go",350000]]},
+  {line:"15", name:"iPhone 15 Pro", variants:[["128 Go",360000],["256 Go",370000]]},
+  {line:"15", name:"iPhone 15 Pro Max", variants:[["256 Go",430000],["512 Go",450000]]},
+  {line:"16", name:"iPhone 16", variants:[["128 Go",380000],["256 Go",400000]]},
+  {line:"16", name:"iPhone 16 Plus", variants:[["128 Go",420000],["256 Go",440000]]},
+  {line:"16", name:"iPhone 16 Pro", variants:[["256 Go",450000],["512 Go",470000],["1 To",490000]]},
+  {line:"16", name:"iPhone 16 Pro Max", badge:"TOP", variants:[["256 Go",530000],["512 Go",540000],["1 To",600000]]},
+  {line:"17", name:"iPhone 17", badge:"NOUVEAU", variants:[["256 Go",510000],["512 Go",550000]]},
+  {line:"17", name:"iPhone 17 Air", badge:"NOUVEAU", variants:[["256 Go",570000]]},
+  {line:"17", name:"iPhone 17 Pro", badge:"NOUVEAU", variants:[["256 Go",660000],["512 Go",690000],["1 To",720000]]},
+  {line:"17", name:"iPhone 17 Pro Max", badge:"NOUVEAU", variants:[["256 Go",780000],["512 Go",830000],["1 To",870000]]},
+];
+
+const accessories = [
+  {name:"Chargeur Lightning", desc:"Câble Lightning vers USB, 1m — compatible iPhone XR à 14", price:5000},
+  {name:"Chargeur Type-C", desc:"USB-C charge rapide — compatible iPhone 15, 16 et 17", price:10000},
+  {name:"AirPods Pro 2", desc:"Réduction de bruit active, son exceptionnel", price:15000},
+  {name:"Power Bank MagSafe", desc:"Batterie externe 5000 mAh — charge sans fil magnétique", price:20000},
+  {name:"Apple Watch", desc:"Différentes séries disponibles — contactez-nous pour les prix", price:null},
+  {name:"AirTag", desc:"Traqueur Bluetooth Apple — retrouvez vos objets facilement", price:15000},
+  {name:"Apple Pencil", desc:"2e génération ou Pro — contactez-nous pour les modèles disponibles", price:null},
+  {name:"Magic Keyboard", desc:"Clavier sans fil Apple — contactez-nous pour les modèles disponibles", price:null},
+  {name:"AirPods Max", desc:"Casque premium à réduction de bruit active", price:null},
+  {name:"Power Bank câbles intégrés", desc:"10 000 mAh avec câbles Lightning, USB-C et Micro-USB", price:25000},
+];
+
+const deviceSVG = `<svg viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="92" height="172" rx="18" stroke="#33445A" stroke-width="3"/>
+  <rect x="14" y="18" width="72" height="130" rx="4" fill="#161D26"/>
+  <circle cx="50" cy="163" r="6" stroke="#33445A" stroke-width="2"/>
+</svg>`;
+const accSVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="36" stroke="#33445A" stroke-width="3"/>
+  <circle cx="50" cy="50" r="14" fill="#161D26" stroke="#33445A" stroke-width="2"/>
+</svg>`;
+
+function fmt(n){ return n.toLocaleString('fr-FR').replace(/,/g,' ') + ' FCFA'; }
+
+// ---- RENDER IPHONES ----
+const lines = [...new Set(iphones.map(p=>p.line))];
+const filterBar = document.getElementById('filterBar');
+filterBar.innerHTML = '<button class="filter-btn active" data-line="all">Tous</button>' +
+  lines.map(l=>`<button class="filter-btn" data-line="${l}">${l}</button>`).join('');
+
+function renderIphones(filter){
+  const grid = document.getElementById('iphoneGrid');
+  const list = filter==='all' ? iphones : iphones.filter(p=>p.line===filter);
+  grid.innerHTML = list.map((p,i)=>{
+    const idx = iphones.indexOf(p);
+    return `<div class="card">
+      ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+      <div class="device-icon">${deviceSVG}</div>
+      <h4>${p.name}</h4>
+      ${p.variants.map(v=>`<div class="variant-row"><span>${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('')}
+      <button class="card-cta" onclick="openVariantPicker(${idx})">Choisir</button>
+    </div>`;
+  }).join('');
+}
+renderIphones('all');
+
+filterBar.addEventListener('click', e=>{
+  if(!e.target.classList.contains('filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderIphones(e.target.dataset.line);
+});
+
+// ---- RENDER ACCESSORIES ----
+document.getElementById('accGrid').innerHTML = accessories.map((a,i)=>`
+  <div class="card">
+    <div class="device-icon">${accSVG}</div>
+    <h4>${a.name}</h4>
+    <p class="note">${a.desc}</p>
+    ${a.price
+      ? `<div class="card-price-single">${fmt(a.price)}</div><button class="card-cta" onclick="addToCart('${a.name.replace(/'/g,"\\'")}','',${a.price})">Commander</button>`
+      : `<a class="card-cta" style="display:block;text-align:center;text-decoration:none;" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Bonjour One Vision Tech, je voudrais connaître le prix pour: '+a.name)}" target="_blank">Demander les prix</a>`
+    }
+  </div>
+`).join('');
+
+// ---- CART ----
+let cart = [];
+let pendingProduct = null;
+
+function openVariantPicker(idx){
+  pendingProduct = iphones[idx];
+  document.getElementById('variantModalTitle').textContent = pendingProduct.name;
+  document.getElementById('variantList').innerHTML = pendingProduct.variants.map(v=>
+    `<div class="variant-pick" onclick="addToCart('${pendingProduct.name.replace(/'/g,"\\'")}','${v[0]}',${v[1]});closeAll();">
+      <span>${v[0]}</span><b>${fmt(v[1])}</b>
+    </div>`).join('');
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('variantModal').classList.add('open');
+}
+
+function addToCart(name, variant, price){
+  cart.push({name, variant, price});
+  updateCartUI();
+  openCart();
+}
+
+function removeFromCart(i){
+  cart.splice(i,1);
+  updateCartUI();
+}
+
+function updateCartUI(){
+  document.getElementById('cartCount').textContent = cart.length;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if(cart.length===0){
+    body.innerHTML = '<div class="cart-empty">Votre panier est vide.</div>';
+    foot.style.display = 'none';
+    return;
+  }
+  body.innerHTML = cart.map((item,i)=>`
+    <div class="cart-item">
+      <div class="cart-item-info"><b>${item.name}</b><span>${item.variant || ''} ${item.variant ? '· ' : ''}${fmt(item.price)}</span></div>
+      <button class="cart-item-remove" onclick="removeFromCart(${i})">Retirer</button>
+    </div>`).join('');
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  document.getElementById('cartTotal').textContent = fmt(total);
+  foot.style.display = 'block';
+}
+
+function openCart(){
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+}
+function openCheckout(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('checkoutModal').classList.add('open');
+}
+function closeAll(){
+  document.querySelectorAll('.overlay,.drawer,.modal').forEach(el=>el.classList.remove('open'));
+}
+
+let selectedPay = 'Wave';
+function selectPay(el){
+  document.querySelectorAll('.pay-option').forEach(p=>{p.classList.remove('selected'); p.querySelector('span:last-child').textContent='';});
+  el.classList.add('selected');
+  el.querySelector('span:last-child').textContent = '✓';
+  selectedPay = el.dataset.pay;
+}
+
+function submitOrder(){
+  const name = document.getElementById('chkName').value.trim();
+  const phone = document.getElementById('chkPhone').value.trim();
+  const area = document.getElementById('chkArea').value.trim();
+  if(!name || !phone){ alert('Merci de renseigner votre nom et votre téléphone.'); return; }
+  const items = cart.map(i=>`- ${i.name} ${i.variant ? '('+i.variant+')' : ''} : ${fmt(i.price)}`).join('%0A');
+  const total = fmt(cart.reduce((s,i)=>s+i.price,0));
+  const msg = `Bonjour One Vision Tech, je souhaite commander :%0A${items}%0A%0ATotal : ${total}%0APaiement : ${selectedPay}%0ANom : ${name}%0AT%C3%A9l%C3%A9phone : ${phone}%0AQuartier : ${area}`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+function sendContactForm(e){
+  e.preventDefault();
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const interest = document.getElementById('cInterest').value;
+  const msg = document.getElementById('cMsg').value.trim();
+  const text = `Bonjour One Vision Tech,%0ANom : ${name}%0AT%C3%A9l%C3%A9phone : ${phone}%0AInt%C3%A9r%C3%AAt : ${interest}%0AMessage : ${msg}`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
+}
+</script>
+
+</body>
+</html>
