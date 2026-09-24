@@ -203,6 +203,18 @@
   .hero-marks{display:flex;justify-content:center;gap:18px;margin:0 auto 34px;flex-wrap:wrap;}
   .hero-marks img{height:74px;width:auto;mix-blend-mode:screen;}
   @media(max-width:560px){ .hero-marks img{height:52px;} }
+
+  .hero-slides{position:absolute;inset:0;z-index:0;}
+  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease;transform:scale(1.06);}
+  .hero-slide.on{opacity:1;animation:heroZoom 7s ease-out forwards;}
+  @keyframes heroZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+  .hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,13,18,0.55) 0%,rgba(10,13,18,0.72) 55%,var(--bg) 100%);}
+  .hero > *:not(.hero-slides):not(.hero-shade){position:relative;z-index:2;}
+  .hero-dots{display:flex;justify-content:center;gap:8px;margin-top:40px;}
+  .hero-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);border:none;cursor:pointer;padding:0;transition:all .3s;}
+  .hero-dots button.on{background:var(--blue);width:22px;border-radius:5px;}
+  .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+  .hero .eyebrow-mark{background:rgba(10,13,18,0.55);border:1px solid var(--line);padding:6px 14px;border-radius:100px;}
 </style>
 </head>
 <body>
@@ -221,12 +233,12 @@
 </header>
 
 <section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-marks">
-    <img src="img/logos/one-vision-tech-mark.webp" alt="One Vision Tech">
-    <img src="img/logos/one-vision-immobilier-mark.webp" alt="One Vision Immobilier">
-    <img src="img/logos/one-vision-automobile-mark.webp" alt="One Vision Automobile">
+  <div class="hero-slides">
+    <div class="hero-slide on" style="background-image:url('img/hero/hero-1.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero/hero-2.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero/hero-3.webp')"></div>
   </div>
+  <div class="hero-shade"></div>
   <div class="eyebrow-mark"><span class="dot"></span>Groupe fondé à Dakar</div>
   <h1 class="headline">Deux esprits.<br>Une direction.</h1>
   <p class="sub">One Vision réunit la technologie, la mobilité et l'immobilier sous une même ambition : construire des marques durables qui accompagnent les Dakarois dans leur quotidien.</p>
@@ -234,6 +246,7 @@
     <a href="tech.html" class="btn-primary">Découvrir One Vision Tech</a>
     <a href="#contact" class="btn-ghost">Nous contacter</a>
   </div>
+  <div class="hero-dots" id="heroDots"><button class="on" aria-label="Diapositive 1"></button><button aria-label="Diapositive 2"></button><button aria-label="Diapositive 3"></button></div>
 </section>
 
 <div class="identity">
@@ -315,5 +328,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.hero-slide')];
+  const dots=[...document.querySelectorAll('#heroDots button')];
+  let i=0, t;
+  function go(n){
+    slides[i].classList.remove('on'); dots[i].classList.remove('on');
+    i=(n+slides.length)%slides.length;
+    void slides[i].offsetWidth;
+    slides[i].classList.add('on'); dots[i].classList.add('on');
+  }
+  function start(){ clearInterval(t); t=setInterval(()=>go(i+1),6000); }
+  dots.forEach((d,n)=>d.addEventListener('click',()=>{go(n);start();}));
+  start();
+})();
+</script>
 </body>
 </html>
