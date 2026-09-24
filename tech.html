@@ -182,6 +182,17 @@
   .demand-card img{width:100%;height:170px;object-fit:contain;margin-bottom:16px;}
   .pay-option .p-left{display:flex;align-items:center;gap:12px;}
   .pay-option .p-left img{width:34px;height:34px;border-radius:8px;object-fit:cover;}
+
+  .hero-slides{position:absolute;inset:0;z-index:0;}
+  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:0;transition:opacity 1.4s ease;transform:scale(1.06);}
+  .hero-slide.on{opacity:1;animation:heroZoom 7s ease-out forwards;}
+  @keyframes heroZoom{from{transform:scale(1.06);}to{transform:scale(1);}}
+  .hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,13,18,0.5) 0%,rgba(10,13,18,0.7) 55%,var(--bg) 100%);}
+  .hero > *:not(.hero-slides):not(.hero-shade){position:relative;z-index:2;}
+  .hero-dots{display:flex;justify-content:center;gap:8px;margin-bottom:40px;}
+  .hero-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);border:none;cursor:pointer;padding:0;transition:all .3s;}
+  .hero-dots button.on{background:var(--blue);width:22px;border-radius:5px;}
+  .hero .tag-loc{background:rgba(10,13,18,0.55);border:1px solid var(--line);padding:6px 14px;border-radius:100px;}
 </style>
 </head>
 <body>
@@ -203,7 +214,11 @@
 </header>
 
 <section class="hero">
-  <div class="hero-glow"></div>
+  <div class="hero-slides">
+    <div class="hero-slide on" style="background-image:url('img/hero/tech-1.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero/tech-2.webp')"></div>
+  </div>
+  <div class="hero-shade"></div>
   <img class="hero-logo" src="img/logos/one-vision-tech-full.webp" alt="One Vision Tech — Technologie sans limites">
   <div class="tag-loc">🇸🇳 Dakar, Sénégal</div>
   <h1 class="headline">Technologie sans limites, service sans détour</h1>
@@ -212,6 +227,7 @@
     <a href="#iphone" class="btn-primary">Voir les iPhone</a>
     <a href="#contact" class="btn-ghost">Nous écrire</a>
   </div>
+  <div class="hero-dots" id="heroDots"><button class="on" aria-label="Diapositive 1"></button><button aria-label="Diapositive 2"></button></div>
   <div class="stat-row">
     <div class="stat"><b>24+</b><span>Modèles iPhone</span></div>
     <div class="stat"><b>100%</b><span>Authentique</span></div>
@@ -588,5 +604,16 @@ function sendContactForm(e){
 }
 </script>
 
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.hero-slide')];
+  const dots=[...document.querySelectorAll('#heroDots button')];
+  let i=0,t;
+  function go(n){slides[i].classList.remove('on');dots[i].classList.remove('on');i=(n+slides.length)%slides.length;void slides[i].offsetWidth;slides[i].classList.add('on');dots[i].classList.add('on');}
+  function start(){clearInterval(t);t=setInterval(()=>go(i+1),6000);}
+  dots.forEach((d,n)=>d.addEventListener('click',()=>{go(n);start();}));
+  start();
+})();
+</script>
 </body>
 </html>
