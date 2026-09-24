@@ -193,6 +193,36 @@
   .hero-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);border:none;cursor:pointer;padding:0;transition:all .3s;}
   .hero-dots button.on{background:var(--blue);width:22px;border-radius:5px;}
   .hero .tag-loc{background:rgba(10,13,18,0.55);border:1px solid var(--line);padding:6px 14px;border-radius:100px;}
+
+  /* iPhone : une génération à la fois, lignes compactes */
+  .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;max-width:1180px;margin:0 auto 28px;padding:0 2px 4px;}
+  .filters::-webkit-scrollbar{display:none;}
+  .filter-btn{flex:0 0 auto;}
+  @media(min-width:900px){ .filters{justify-content:center;} }
+  .iph-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;}
+  .iph-row{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;position:relative;transition:border-color .2s,transform .2s;}
+  .iph-row:hover{border-color:#33445A;transform:translateY(-2px);}
+  .iph-thumb{height:130px;background:var(--surface-2);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .iph-thumb img{width:100%;height:100%;object-fit:contain;padding:12px;}
+  .iph-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;}
+  .iph-prices{display:flex;flex-wrap:wrap;gap:6px 14px;}
+  .iph-price{font-size:0.74rem;color:var(--text-muted);}
+  .iph-price b{display:block;color:var(--text);font-size:0.86rem;font-weight:700;}
+  .iph-cta{background:var(--surface-2);border:1px solid var(--line);color:var(--text);padding:10px;border-radius:9px;font-weight:600;font-size:0.88rem;transition:all .2s;}
+  .iph-cta:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .iph-badge{position:absolute;top:10px;right:10px;font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:100px;background:var(--blue);color:#fff;z-index:1;}
+  @media(max-width:600px){
+    .iph-grid{grid-template-columns:1fr;gap:10px;}
+    .iph-row{flex-direction:row;align-items:center;padding:10px;gap:12px;}
+    .iph-thumb{width:84px;height:96px;flex-shrink:0;}
+    .iph-thumb img{padding:6px;}
+    .iph-info{flex:1;min-width:0;}
+    .iph-name{font-size:0.94rem;margin-bottom:6px;}
+    .iph-price{font-size:0.7rem;}
+    .iph-price b{font-size:0.8rem;}
+    .iph-cta{flex-shrink:0;padding:9px 12px;font-size:0.8rem;}
+    .iph-badge{top:6px;left:6px;right:auto;}
+  }
 </style>
 </head>
 <body>
@@ -255,7 +285,7 @@
     <p>Débloqués toutes SIM, vérifiés avant expédition.</p>
   </div>
   <div class="filters" id="filterBar"></div>
-  <div class="grid" id="iphoneGrid"></div>
+  <div class="iph-grid" id="iphoneGrid"></div>
 </section>
 
 <section id="accessoires" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
@@ -478,24 +508,26 @@ function fmt(n){ return n.toLocaleString('fr-FR').replace(/,/g,' ') + ' FCFA'; }
 // ---- RENDER IPHONES ----
 const lines = [...new Set(iphones.map(p=>p.line))];
 const filterBar = document.getElementById('filterBar');
-filterBar.innerHTML = '<button class="filter-btn active" data-line="all">Tous</button>' +
-  lines.map(l=>`<button class="filter-btn" data-line="${l}">${l}</button>`).join('');
+const DEFAULT_LINE = lines[lines.length-1];
+filterBar.innerHTML = lines.slice().reverse().map(l=>`<button class="filter-btn${l===DEFAULT_LINE?' active':''}" data-line="${l}">iPhone ${l}</button>`).join('');
 
 function renderIphones(filter){
   const grid = document.getElementById('iphoneGrid');
-  const list = filter==='all' ? iphones : iphones.filter(p=>p.line===filter);
-  grid.innerHTML = list.map((p,i)=>{
+  const list = iphones.filter(p=>p.line===filter);
+  grid.innerHTML = list.map(p=>{
     const idx = iphones.indexOf(p);
-    return `<div class="card">
-      ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
-      <img class="product-img" src="${imgOf(p.name)}" alt="${p.name}" loading="lazy">
-      <h4>${p.name}</h4>
-      ${p.variants.map(v=>`<div class="variant-row"><span>${v[0]}</span><b>${fmt(v[1])}</b></div>`).join('')}
-      <button class="card-cta" onclick="openVariantPicker(${idx})">Choisir</button>
+    return `<div class="iph-row">
+      ${p.badge ? `<span class="iph-badge">${p.badge}</span>` : ''}
+      <div class="iph-thumb"><img src="${imgOf(p.name)}" alt="${p.name}" loading="lazy"></div>
+      <div class="iph-info">
+        <div class="iph-name">${p.name}</div>
+        <div class="iph-prices">${p.variants.map(v=>`<span class="iph-price">${v[0]}<b>${fmt(v[1]).replace(' FCFA',' F')}</b></span>`).join('')}</div>
+      </div>
+      <button class="iph-cta" onclick="openVariantPicker(${idx})">Choisir</button>
     </div>`;
   }).join('');
 }
-renderIphones('all');
+renderIphones(DEFAULT_LINE);
 
 filterBar.addEventListener('click', e=>{
   if(!e.target.classList.contains('filter-btn')) return;
